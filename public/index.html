@@ -1,0 +1,249 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LeaveManager | Dashboard</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="layout">
+    <aside class="sidebar" id="sidebar">
+        <a href="#dashboard" class="brand">
+            <span class="brand-icon"><i class="fa-solid fa-calendar-check"></i></span>
+            <span>
+                <b>Leave<span>Manager</span></b>
+                <small>Work • Balance • Grow</small>
+            </span>
+        </a>
+
+        <nav>
+            <a class="nav-link active" href="#dashboard"><i class="fa-solid fa-house"></i> Dashboard</a>
+            <a class="nav-link" href="#employeePanel"><i class="fa-solid fa-user-plus"></i> Add Employee</a>
+            <a class="nav-link" href="#leavePanel"><i class="fa-regular fa-calendar-days"></i> Apply Leave</a>
+            <a class="nav-link" href="#records"><i class="fa-solid fa-rectangle-list"></i> View Records</a>
+            <a class="nav-link" href="#employeePanel"><i class="fa-solid fa-pen-to-square"></i> Update Employee</a>
+            <a class="nav-link" href="#records"><i class="fa-solid fa-trash"></i> Delete Record</a>
+        </nav>
+
+        <div class="sidebar-note">
+            <span>🌱</span>
+            <b>Happy Employees<br>Build Stronger<br>Workplaces</b>
+        </div>
+
+        <p class="sidebar-footer">
+            © 2026 Leave Management System<br>
+            Designed by Geetha
+        </p>
+    </aside>
+
+    <main class="main" id="dashboard">
+        <header class="topbar">
+            <button class="menu-button" id="menuButton" aria-label="Open menu">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+            <div class="top-spacer"></div>
+            <button class="top-icon" id="refreshButton" title="Refresh data">
+                <i class="fa-solid fa-rotate"></i>
+            </button>
+            <button class="top-icon" title="Notifications">
+                <i class="fa-regular fa-bell"></i>
+            </button>
+            <div class="profile">
+                <span class="avatar"><i class="fa-regular fa-user"></i></span>
+                <span><b>Welcome,</b><small>Geetha</small></span>
+            </div>
+        </header>
+
+        <div class="content">
+            <section class="hero">
+                <div class="hero-copy">
+                    <p class="eyebrow">PEOPLE FIRST • WORK BETTER</p>
+                    <h1>Employee <span>Leave Management System</span></h1>
+                    <p class="hero-description">
+                        Manage your leaves, track your requests, and keep your<br class="desktop-only">
+                        work-life balance in check.
+                    </p>
+                    <div class="hero-features">
+                        <span><i class="fa-solid fa-stopwatch"></i> Easy Request</span>
+                        <span><i class="fa-solid fa-shield-heart"></i> Track Status</span>
+                        <span><i class="fa-solid fa-mug-hot"></i> Better Productivity</span>
+                    </div>
+                </div>
+                <div class="hero-quote">Take<br>a Break<br><b>You Deserve It!</b> ☺</div>
+            </section>
+
+            <section class="stats">
+                <article class="stat blue">
+                    <span class="stat-icon"><i class="fa-solid fa-users"></i></span>
+                    <div><small>Total Employees</small><strong id="totalEmployees">0</strong></div>
+                </article>
+                <article class="stat green">
+                    <span class="stat-icon"><i class="fa-regular fa-calendar-check"></i></span>
+                    <div><small>Total Leave Requests</small><strong id="totalLeaves">0</strong></div>
+                </article>
+                <article class="stat orange">
+                    <span class="stat-icon"><i class="fa-solid fa-circle-check"></i></span>
+                    <div><small>Approved</small><strong id="approvedLeaves">0</strong></div>
+                </article>
+                <article class="stat pink">
+                    <span class="stat-icon"><i class="fa-solid fa-circle-xmark"></i></span>
+                    <div><small>Pending</small><strong id="pendingLeaves">0</strong></div>
+                </article>
+            </section>
+
+            <section class="forms-grid">
+                <article class="panel" id="employeePanel">
+                    <div class="panel-heading purple">
+                        <i class="fa-solid fa-user-plus"></i>
+                        <div>
+                            <h2 id="employeeTitle">Add Employee</h2>
+                            <p>Enter employee details to register a new employee.</p>
+                        </div>
+                    </div>
+
+                    <form id="employeeForm" class="employee-form">
+                        <input type="hidden" id="employeeId">
+
+                        <label>Employee Name
+                            <input type="text" id="employeeName" placeholder="Enter employee name" required>
+                        </label>
+
+                        <label>Designation
+                            <select id="designation" required>
+                                <option value="">Select designation</option>
+                                <option>Developer</option>
+                                <option>Manager</option>
+                                <option>Designer</option>
+                                <option>Tester</option>
+                                <option>HR</option>
+                                <option>Accountant</option>
+                                <option>Team Lead</option>
+                                <option>Intern</option>
+                                <option>Other</option>
+                            </select>
+                        </label>
+
+                        <label>Email Address
+                            <input type="email" id="employeeEmail" placeholder="Enter email address">
+                        </label>
+
+                        <div class="form-buttons">
+                            <button type="submit" class="btn purple-btn" id="employeeSubmit">
+                                <i class="fa-solid fa-plus"></i> Add Employee
+                            </button>
+                            <button type="button" class="btn cancel-btn" id="cancelEdit" hidden>Cancel</button>
+                        </div>
+
+                        <img class="team-image"
+                            src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=500&q=80"
+                            alt="Team working together">
+                    </form>
+                </article>
+
+                <article class="panel" id="leavePanel">
+                    <div class="panel-heading teal">
+                        <i class="fa-regular fa-calendar-days"></i>
+                        <div>
+                            <h2>Apply for Leave</h2>
+                            <p>Submit your leave request here.</p>
+                        </div>
+                    </div>
+
+                    <form id="leaveForm" class="leave-form">
+                        <label>Employee ID
+                            <select id="leaveEmployee" required>
+                                <option value="">Select Employee</option>
+                            </select>
+                        </label>
+
+                        <label>Type of Leave
+                            <select id="leaveType" required>
+                                <option value="">Select leave type</option>
+                                <option>Casual</option>
+                                <option>Sick</option>
+                                <option>Personal</option>
+                                <option>Professional</option>
+                                <option>Earned</option>
+                                <option>Unpaid</option>
+                            </select>
+                        </label>
+
+                        <label>Number of Days
+                            <select id="leaveDays" required>
+                                <option value="">Select days</option>
+                                <option value="1">1 day</option>
+                                <option value="2">2 days</option>
+                                <option value="3">3 days</option>
+                                <option value="4">4 days</option>
+                                <option value="5">5 days</option>
+                                <option value="6">6 days</option>
+                                <option value="7">7 days</option>
+                                <option value="10">10 days</option>
+                                <option value="15">15 days</option>
+                            </select>
+                        </label>
+
+                        <label>Leave Date
+                            <input type="date" id="leaveDate" required>
+                        </label>
+
+                        <label>Description
+                            <textarea id="leaveDescription" rows="2" placeholder="Enter reason for leave..." required></textarea>
+                        </label>
+
+                        <button type="submit" class="btn submit-btn">
+                            <i class="fa-solid fa-paper-plane"></i> Submit Request
+                        </button>
+                    </form>
+                </article>
+            </section>
+
+            <section class="panel records" id="records">
+                <div class="records-heading">
+                    <h2><i class="fa-regular fa-calendar-days"></i> Leave Requests</h2>
+                    <div class="search-box">
+                        <input type="search" id="searchInput" placeholder="Search by employee name...">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </div>
+                </div>
+
+                <div class="table-wrap">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Employee Name</th>
+                                <th>Designation</th>
+                                <th>Type of Leave</th>
+                                <th>Number of Days</th>
+                                <th>Description</th>
+                                <th>Status</th>
+                                <th>Request Date</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="leaveTableBody">
+                            <tr><td colspan="9" class="empty">Loading records...</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <footer class="main-footer">
+                © 2026 Leave Management System | Designed by Geetha
+            </footer>
+        </div>
+    </main>
+</div>
+
+<div id="toast" class="toast" role="status"></div>
+<script src="script.js"></script>
+</body>
+</html>
